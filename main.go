@@ -2,9 +2,14 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 func main() {
+	//getting the seed
+	rand.Seed(time.Now().UnixNano())
+
 	//makes an emptry array
 	var options []string
 
@@ -24,4 +29,13 @@ func main() {
 		options = append(options, choice)
 	}
 
+	//gets a random option and returns it and prints it
+	var selction string = random_option(options)
+	fmt.Println("You got: ", selction)
+}
+
+// getting a random word from the list
+func random_option(list []string) string {
+	var index int = rand.Intn(len(list))
+	return list[index]
 }
